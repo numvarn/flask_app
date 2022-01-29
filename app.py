@@ -10,7 +10,7 @@ def home():
 @app.route("/callback", methods=['POST'])
 def callback():
     body = request.get_data(as_text=True)
-    print(body)
+    print(body['queryResult']['queryText'])
     return 'OK'
 
 
