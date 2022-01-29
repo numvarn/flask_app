@@ -1,0 +1,9 @@
+Flask
+get
+gunicorn
+post
+requests
+wikipedia
+line-bot-sdk
+pandas
+googletrans
