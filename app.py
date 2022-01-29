@@ -11,7 +11,7 @@ def home():
 def callback():
     body = request.get_data(as_text=True)
     print(body['queryResult']['queryText'])
-    return 'OK'
+    return body['queryResult']['queryText']
 
 
 if __name__ == '__main__':
