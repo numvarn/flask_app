@@ -1,10 +1,17 @@
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
     return "Hello My First Flask Project, Phisan Sookkhee"
+
+
+@app.route("/callback", methods=['POST'])
+def callback():
+    body = request.get_data(as_text=True)
+    print(body)
+    return 'OK'
 
 
 if __name__ == '__main__':
