@@ -1,10 +1,17 @@
 from flask import Flask, request
-from linebot import *
+from linebot import (
+    LineBotApi, WebhookHandler
+)
+from linebot.models import (
+    TextSendMessage,
+)
+
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('xxxxxx')
-handler = WebhookHandler('xxxxxx')
+line_bot_api = LineBotApi(
+    'OfUecJfUK9JXszTysTV2DJmN3P9ckblUryfYIW+LUh/AWXt9KPL26U5cl1sPFcsCmAUd7d5uJfDvxqlDEGCuz8AncGqLozRrkCQBzxQ1nvaChSiqjo4ml37/Q8oUSNadaYVOmT14p8vlaHpEXm8mIwdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('18faa98b8de47b520f83083dbc4ff534')
 
 
 @app.route('/')
@@ -29,7 +36,15 @@ def callback():
     print('intent = ' + intent)
     print('reply_token = ' + reply_token)
 
+    reply(intent, text, reply_token, id, disname)
+
     return 'OK'
+
+
+def reply(intent, text, reply_token, id, disname):
+    if intent == 'intent 5':
+        text_message = TextSendMessage(text='ทดสอบสำเร็จ')
+        line_bot_api.reply_message(reply_token, text_message)
 
 
 if __name__ == '__main__':
