@@ -3,7 +3,7 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.models import (
-    TextSendMessage, FlexSendMessage, BubbleContainer, ImageComponent, URIAction
+    TextSendMessage, FlexSendMessage, BubbleContainer, ImageComponent, URIAction, BoxComponent
 )
 
 
@@ -43,6 +43,7 @@ def callback():
 
 def reply(intent, text, reply_token, id, disname):
     if intent == 'Intent5':
+        # ตั้งค่าข้อความตอบกลับ Flex Message
         flex_message = FlexSendMessage(
             alt_text='hello',
             contents=BubbleContainer(
@@ -55,9 +56,22 @@ def reply(intent, text, reply_token, id, disname):
                     action=URIAction(
                         uri='http://www.sanook.com', label='label')
                 )
-            )
+            ),
+            body=BoxComponent(
+                layout='vertical',
+                contents=[
+                    {
+                        "type": "text",
+                        "text": "Brown Cafe",
+                        "weight": "bold",
+                        "size": "xl"
+
+                    },
+                ],
+            ),
         )
 
+        # ตั้งค่าข้อความตอบกลับ Text Message
         text_message = TextSendMessage(
             text='สวัสดี {} \nทดสอบสำเร็จ'.format(disname))
 
