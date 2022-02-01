@@ -55,19 +55,19 @@ def reply(intent, text, reply_token, id, disname):
                     aspect_mode='cover',
                     action=URIAction(
                         uri='http://www.sanook.com', label='label')
-                )
-            ),
-            body=BoxComponent(
-                layout='vertical',
-                contents=[
-                    {
-                        "type": "text",
-                        "text": "Brown Cafe",
-                        "weight": "bold",
-                        "size": "xl"
+                ),
+                body=BoxComponent(
+                    layout='vertical',
+                    contents=[
+                        {
+                            "type": "text",
+                            "text": "Brown Cafe",
+                            "weight": "bold",
+                            "size": "xl"
 
-                    },
-                ],
+                        },
+                    ],
+                ),
             ),
         )
 
